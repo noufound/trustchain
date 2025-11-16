@@ -1,4 +1,5 @@
 import CreateTrustForm from '@/components/dashboard/CreateTrustForm';
+export const runtime = 'edge';
 
 export default function CreateTrustPage() {
   return (

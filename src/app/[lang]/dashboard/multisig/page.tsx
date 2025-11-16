@@ -11,6 +11,7 @@ import {
   CheckIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
+export const runtime = 'edge';
 
 type ApplicationStatus = 'pending' | 'approved' | 'rejected';
 

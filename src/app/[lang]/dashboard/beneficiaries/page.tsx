@@ -9,6 +9,7 @@ import {
   CheckCircleIcon,
   XCircleIcon
 } from '@heroicons/react/24/outline';
+export const runtime = 'edge';
 
 interface TrustEvent {
   id: string;

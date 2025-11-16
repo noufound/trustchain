@@ -9,6 +9,7 @@ import { waitForTransactionReceipt } from "wagmi/actions";
 import toast, { Toaster } from 'react-hot-toast';
 import { TokenVestingFactoryABI } from '@/abi/TokenVestingFactory';
 import { TokenVestingABI } from "@/abi/TokenVesting";
+export const runtime = 'edge';
 
 
 interface TokenVestingBaseInfo {

@@ -7,6 +7,7 @@ import {
   CalendarIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
+export const runtime = 'edge';
 
 // 模拟数据
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

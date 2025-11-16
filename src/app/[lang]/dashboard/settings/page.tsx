@@ -9,6 +9,7 @@ import {
   KeyIcon,
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
+export const runtime = 'edge';
 
 export default function SettingsPage() {
   const [emailNotifications, setEmailNotifications] = useState(true);

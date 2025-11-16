@@ -14,6 +14,7 @@ import { TokenVestingFactoryABI } from '@/abi/TokenVestingFactory';
 import { TokenVestingABI } from "@/abi/TokenVesting";
 import { formatUnits } from 'viem/utils';
 import { Button, Form, Input, Modal, Space, Tag} from 'antd';
+export const runtime = 'edge';
 
 
 interface TokenVestingBaseInfo {
