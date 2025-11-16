@@ -82,7 +82,7 @@ export default function DashboardOverview() {
       const {beneficiaryInfo, vested} = trust as VestingBeneficiaryInfo;
       totalAmount += beneficiaryInfo.amount;
       vestedAmount += vested;
-      let withdrawable = beneficiaryInfo.revoked ? BigInt(0) : vested - beneficiaryInfo.extracted;
+      const withdrawable = beneficiaryInfo.revoked ? BigInt(0) : vested - beneficiaryInfo.extracted;
       withdrawableAmount += withdrawable
     })
     return {

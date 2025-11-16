@@ -393,7 +393,7 @@ export default function CreateTrustForm() {
       return false;
     }
   };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   const createTrust = async (factory_addr: EthereumAddress, args: any[]) => {
     try {
       const txh = await writeContract({
@@ -506,6 +506,7 @@ const handleSubmit = async () => {
       toast.dismiss();
       toast.error('信托创建失败');
     }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     toast.dismiss();
     console.error('创建信托失败:', error);

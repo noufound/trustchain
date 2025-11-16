@@ -38,6 +38,7 @@ export default function Footer({ lang, locale }: ParamProps) {
     ];
 
     // 设置语言的函数
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const changeLanguage = (currentLang: any) => {
         document.cookie = `locale=${currentLang}; path=/; max-age=31536000`; // 1年
 

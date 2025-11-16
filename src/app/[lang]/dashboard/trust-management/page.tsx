@@ -132,7 +132,7 @@ export default function TrustManagementPage() {
     form.validateFields()
     .then(async values => {
       
-      let recover = values.recover;
+      const recover = values.recover;
       if (!recover.startsWith('0x')) {
         toast.dismiss()
         toast.error('地址必须以0x开头');
@@ -161,6 +161,7 @@ export default function TrustManagementPage() {
             toast.dismiss();
             toast.error('撤销受益人失败');
           }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
           toast.dismiss();
           console.error('撤销受益人失败:', error);
