@@ -8,7 +8,24 @@
       "support":"",
       "lang": "Language",
       
-      "dashboard": "Dashboard"
+      "dashboard": "Dashboard",
+      "family": "Family Trust",
+      "enterprise": "Enterprise Trust",
+      "dao": "Dao Governance",
+      "rwa": "RWA",
+      "vesting": "Vesting",
+      "compliance2": "Compliance",
+      "overview": "Overview",
+      "analysis": "Industry Analysis",
+      "vision": "Platform Vision",
+      "architecture": "Business Architecture",
+      "product": "Products",
+      "security": "Security Design",
+      "legal":"Legal & Compliance",
+      "case": "Use Cases & Case Studies",
+      "governance": "Governance",
+      "roadmap": "Roadmap",
+      "risk": "Risk Disclosure"
   },
   "home": {
     "slogon": "On-Chain Trust ",

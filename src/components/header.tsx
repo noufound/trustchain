@@ -19,7 +19,7 @@ export default function Header({ lang, locale }: ParamProps) {
       key: '1',
       label: (
         <Link rel="noopener noreferrer" href="/solutions/family-trust/">
-          Family Trust
+          {dict.header.family}
         </Link>
       ),
     },
@@ -27,39 +27,39 @@ export default function Header({ lang, locale }: ParamProps) {
       key: '2',
       label: (
         <Link rel="noopener noreferrer" href="/solutions/enterprise/">
-          Enterprise Trust
+          {dict.header.enterprise}
         </Link>
       ),
     },
     {
       key: '3',
       label: (
-        <Link rel="noopener noreferrer" href="https://www.luohanacademy.com">
-          DAO Governance
+        <Link rel="noopener noreferrer" href="/solutions/dao/">
+          {dict.header.dao}
         </Link>
       ),
     },
     {
       key: '4',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="https://www.example.com">
-          RWA
+        <Link target="_blank" rel="noopener noreferrer" href="/solutions/rwa/">
+          {dict.header.rwa}
         </Link>
       ),
     },
     {
       key: '5',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="https://www.example.com">
-          Vesting
+        <Link target="_blank" rel="noopener noreferrer" href="/solutions/vesting/">
+          {dict.header.vesting}
         </Link>
       ),
     },
     {
       key: '6',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="https://www.example.com">
-          Compliance
+        <Link target="_blank" rel="noopener noreferrer" href="/solutions/compliance/">
+          {dict.header.compliance2}
         </Link>
       ),
     },
@@ -69,24 +69,88 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '11',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/family-trust/">
-          Insights
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs">
+          {dict.header.overview}
         </Link>
       ),
     },
     {
       key: '12',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/enterprise/">
-          Events
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/2.1-chuan-tong-xin-tuo-hang-ye-xian-zhuang-yu-ju-xian">
+          {dict.header.analysis}
         </Link>
       ),
     },
     {
       key: '13',
       label: (
-        <Link rel="noopener noreferrer" href="https://www.luohanacademy.com">
-          Whitepapers
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/3.1-ba-shou-tuo-guan-li-yu-shou-yi-fen-pei-ban-shang-lian">
+          {dict.header.vision}
+        </Link>
+      ),
+    },
+    {
+      key: '14',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/4.1-jue-se-yu-guan-xi-gai-lan">
+          {dict.header.architecture}
+        </Link>
+      ),
+    },
+     {
+      key: '15',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/5.1-lian-shang-xin-tuo-zhang-hu-de-jie-gou-yu-te-xing">
+          {dict.header.products}
+        </Link>
+      ),
+    },
+    {
+      key: '16',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/6.1-ji-shu-zhan-yu-wang-luo-xuan-ze">
+          {dict.header.security}
+        </Link>
+      ),
+    },
+    {
+      key: '17',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/di-7-zhang-falyu-he-gui-kuang-jia/7.1-falding-wei-ji-shu-xie-yi-ceng-er-fei-shou-tuo-falzhu-ti">
+          {dict.header.legal}
+        </Link>
+      ),
+    },
+     {
+      key: '18',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/di-7-zhang-falyu-he-gui-kuang-jia/di-8-zhang-dian-xing-shi-yong-chang-jing-yu-an-li/8.1-duo-fa-yu-jia-zu-cai-fu-chuan-cheng-cong-zhi-ben-tiao-kuan-dao-lian-shang-gui-ze">
+          {dict.header.case}
+        </Link>
+      ),
+    },
+      {
+      key: '19',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/di-7-zhang-falyu-he-gui-kuang-jia/di-8-zhang-dian-xing-shi-yong-chang-jing-yu-an-li/di-9-zhang-zhi-li-jie-gou-yu-she-qu/9.1-zhi-li-mu-biao-yu-ji-ben-yuan-ze">
+          {dict.header.governance}
+        </Link>
+      ),
+    },
+      {
+      key: '20',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/di-7-zhang-falyu-he-gui-kuang-jia/di-8-zhang-dian-xing-shi-yong-chang-jing-yu-an-li/di-9-zhang-zhi-li-jie-gou-yu-she-qu/di-10-zhang-lu-xian-tu-yu-sheng-tai-fa-zhan/10.1-jie-duan-xing-mu-biao-gai-lan">
+          {dict.header.roadmap}
+        </Link>
+      ),
+    },
+     {
+      key: '21',
+      label: (
+        <Link rel="noopener noreferrer" href="https://epoch-trust-chain.gitbook.io/epoch-trust-chain-docs/di-2-zhang-hang-ye-bei-jing-yu-tong-dian-fen-xi/di-3-zhang-she-ji-li-nian-yu-jia-zhi-zhu-zhang/ye-wu-jia-gou-chi-pai-xin-tuo-+-lian-shang-xie-yi-de-xie-tong/di-5-zhang-lian-shang-xin-tuo-chan-pin-xing-tai/di-6-zhang-ji-shu-jia-gou-yu-an-quan-she-ji/di-7-zhang-falyu-he-gui-kuang-jia/di-8-zhang-dian-xing-shi-yong-chang-jing-yu-an-li/di-9-zhang-zhi-li-jie-gou-yu-she-qu/di-10-zhang-lu-xian-tu-yu-sheng-tai-fa-zhan/di-11-zhang-feng-xian-pi-lu-yu-mian-ze-sheng-ming/11.1-zong-ti-sheng-ming">
+          {dict.header.risk}
         </Link>
       ),
     },
