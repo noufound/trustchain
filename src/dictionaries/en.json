@@ -184,8 +184,8 @@
     "programmableRulesDesc": "Bind voting results to smart contracts, enabling clear workflows: \"Voting Approved → Auto-Execution\" or \"Trigger Trustee Execution\".",
     "multiAssetManagement": "Compliant Real-World Entity Integration",
     "multiAssetManagementDesc": "Connect with foundations, companies, or trust entities to provide legal interfaces for DAOs' real-world actions (contract signing, employment, invoicing, equity holding).",
-    "privacyTransparency": "Anti-51% Tyranny & Malicious Governance Attacks",
-    "privacyTransparencyDesc": "Set protection mechanisms for critical matters at the trust level (e.g., cooling-off periods, multi-thresholds) to prevent short-term speculative control of DAO direction.",
+    "privacyTransparency": "Anti-51% Tyranny & Malicious Attacks",
+    "privacyTransparencyDesc": "Set protection mechanisms for critical matters at the trust level to prevent short-term speculative control of DAO direction.",
     "crossGenerational": "Transparent & Auditable Community Trust Foundation",
     "crossGenerationalDesc": "Community members can real-time track fund flows and execution status, building long-term trust and participation motivation.",
 

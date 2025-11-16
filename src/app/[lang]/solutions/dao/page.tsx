@@ -174,7 +174,7 @@ export default async function Home({ params }: PageProps) {
                <div className="section-content section-content-tall">
                   <div className="section-content">
                      <h2 className="text-secondary">{dict.dao.faqTitle}</h2>
-                     <p>
+                     <div>
     
   <div >
     Question1: {dict.dao.q1}<br/>
@@ -205,7 +205,7 @@ export default async function Home({ params }: PageProps) {
   </div>
 
 
-                     </p>
+                     </div>
                   </div>
                </div>
             </div>

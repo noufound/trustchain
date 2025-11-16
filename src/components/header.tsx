@@ -42,7 +42,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '4',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="/solutions/rwa/">
+        <Link rel="noopener noreferrer" href="/solutions/rwa/">
           {dict.header.rwa}
         </Link>
       ),
@@ -50,7 +50,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '5',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="/solutions/vesting/">
+        <Link rel="noopener noreferrer" href="/solutions/vesting/">
           {dict.header.vesting}
         </Link>
       ),
@@ -58,7 +58,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '6',
       label: (
-        <Link target="_blank" rel="noopener noreferrer" href="/solutions/compliance/">
+        <Link rel="noopener noreferrer" href="/solutions/compliance/">
           {dict.header.compliance2}
         </Link>
       ),

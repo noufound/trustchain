@@ -14,25 +14,25 @@ export default function Footer({ lang, locale }: ParamProps) {
         {
             key: '1',
             label: (
-                <button
+                <span
                     // href="#"
                     onClick={() => changeLanguage('cn')}
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none', color: '#111827' }} // 文字改为白色
                 >
                     中文
-                </button>
+                </span>
             )
         },
         {
             key: '2',
             label: (
-                <button
+                <span
                     // href="#"
                     onClick={() => changeLanguage('en')}
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: 'none', color: '#111827' }} // 文字改为白色
                 >
                     EN
-                </button>
+                </span>
             )
         }
     ];
@@ -82,9 +82,12 @@ export default function Footer({ lang, locale }: ParamProps) {
                     <div className="flex items-center gap-6">
                         {/* PC 端的语言切换按钮 */}
                         <button type="button" className="flex items-center text-15 font-medium btn-primary !h-[2.5rem] hidden lg:flex">
-                            <Dropdown menu={{ items: lang_items }}>
+                            <Dropdown
+                                menu={{ items: lang_items }}
+                                overlayStyle={{ background: '#111827', borderRadius: 6 }} // 深色背景
+                            >
                                 <div className="flex justify-center items-center gap-2">
-                                    <span>{dict.header.lang}</span>
+                                    <span >{dict.header.lang}</span> {/* 触发文案为白色 */}
                                 </div>
                             </Dropdown>
                         </button>
@@ -135,4 +138,3 @@ export default function Footer({ lang, locale }: ParamProps) {
 
 
 
- 
