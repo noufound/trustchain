@@ -21,6 +21,11 @@ export function middleware(request) {
     if (excludedPaths.includes(pathname)) {
         return;
     }
+    
+    // 排除静态资源文件（视频、图片等）
+    if (pathname.match(/\.(mp4|webm|ogg|mp3|wav|flac|aac|jpg|jpeg|png|gif|svg|ico|webp)$/)) {
+        return;
+    }
 
 
     const pathnameHasLocale = locales.some(

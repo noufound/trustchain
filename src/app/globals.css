@@ -36,12 +36,268 @@
   --primary-hover: #009990;
   --primary-light: rgba(0, 178, 169, 0.1);
   --primary-gradient: linear-gradient(135deg, #00b2a9 0%, #00c9be 100%);
+  --primary-to-lightgreen: linear-gradient(to right, #00b2a9 0%, #c4f5ea 100%);
+}
+
+/* Header 样式 */
+.header-container {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1030;
+  position: relative;
+}
+
+.nav-logo-img {
+  transition: transform 0.3s ease;
+  /* 将灰色logo改为主色调 - CSS3 filter */
+  filter: brightness(0) saturate(100%) invert(59%) sepia(64%) saturate(478%) hue-rotate(130deg) brightness(92%) contrast(101%);
+}
+
+.nav-logo-img:hover {
+  /* hover时稍微加深颜色 */
+  filter: brightness(0) saturate(100%) invert(48%) sepia(78%) saturate(478%) hue-rotate(130deg) brightness(90%) contrast(101%);
+}
+
+/* Footer 样式 */
+.footer-logo-img {
+  /* 将灰色logo改为主色调 - CSS3 filter */
+  /* filter: brightness(0) saturate(100%) invert(59%) sepia(64%) saturate(478%) hue-rotate(130deg) brightness(92%) contrast(101%); */
+}
+
+.footer-link {
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--primary-color) !important;
+  text-decoration: none;
+}
+
+.bg-darkgray {
+  background-color: #1a1a2e;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.75rem 1rem !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Header 按钮样式 */
+.btn-header-action {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white !important;
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-header-action:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 178, 169, 0.3);
+}
+
+/* 连接钱包文字样式 */
+.connect-wallet-text {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.connect-wallet-text:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 178, 169, 0.3);
+}
+
+/* 导航项间距优化 */
+.navbar-nav .nav-item {
+  margin: 0 0.25rem;
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* 二级导航样式增强 */
+.secondary-page-navbar {
+  transition: all 0.5s ease-in-out;
+}
+
+.secondary-page-navbar button:hover {
+  color: var(--primary-color) !important;
+}
+
+.secondary-page-navbar button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.secondary-page-navbar .nav-link {
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  outline: none;
+  text-decoration: none !important;
+  pointer-events: auto;
+}
+
+.secondary-page-navbar .nav-link:hover {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+}
+
+.secondary-page-navbar .nav-link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.secondary-page-navbar .nav-link:active {
+  transform: scale(0.98);
+}
+
+.secondary-page-navbar button.nav-link {
+  font-size: inherit;
+  font-family: inherit;
+  text-transform: inherit;
+  padding: 0.75rem 1rem;
+}
+
+.secondary-page-navbar .cursor-pointer {
+  cursor: pointer;
+}
+
+/* 确保导航项可点击 */
+.secondary-page-navbar .nav-item {
+  pointer-events: auto;
+}
+
+.secondary-nav-item {
+  z-index: 10;
+}
+
+/* SecondaryNav sticky 样式 */
+.secondary-page-navbar {
+  position: sticky !important;
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
+  background-color: white;
+}
+
+.secondary-page-navbar.is-sticky {
+  background-color: #f8f9fa !important; /* 灰色背景 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* sticky时隐藏图标 */
+.secondary-page-navbar.is-sticky .nav-icon {
+  font-size: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* 进度条样式 */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%; /* 和items容器宽度一致 */
+  height: 0;
+  background-color: #e9ecef;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  z-index: 10;
+}
+
+.secondary-page-navbar.is-sticky .scroll-progress-bar {
+  height: 4px;
+}
+
+/* 按钮hover效果 */
+.secondary-page-navbar button:hover {
+  color: var(--primary-color) !important;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease-out;
+}
+
+/* 活跃section指示器 */
+.active-section-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transition: background-color 0.3s ease;
+}
+
+/* 过渡动画辅助类 */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* 主色调背景 */
+.bg-primary-color {
+  background-color: var(--primary-color) !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body {
-  height: 100%;
-  overflow-x: hidden;
+  min-height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#__next,
+.home {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* 自定义样式 */
@@ -362,6 +618,21 @@ html, body {
   z-index: 998;
 }
 
+/* Header 响应式样式 */
+@media (max-width: 991px) {
+  .navbar-collapse .d-flex {
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .btn-header-action,
+  .connect-wallet-text {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 /* 响应式 */
 @media (max-width: 768px) {
   /* 显示移动端顶部栏 */
@@ -603,4 +874,34 @@ html, body {
   .vstack > .card .btn.delete{
     width: auto;
   }
+}
+
+/* 地图组件样式 */
+.map-with-routes-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.map-with-routes-container svg text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.map-with-routes-container svg {
+  overflow: visible;
+}
+
+/* 地图响应式调整 */
+@media (max-width: 768px) {
+  .map-with-routes-container svg text {
+    font-size: 10px;
+  }
+}
+
+/* 主色调到淡绿色渐变 */
+.bg-primary-to-lightgreen {
+  background: var(--primary-to-lightgreen);
 }

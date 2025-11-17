@@ -7,7 +7,7 @@
 
 /* mobile */
 main {
-  margin-top: 80px;
+  
 }
 .back-to-top {
   display: none;
@@ -73,10 +73,6 @@ main {
   border-image-source: var(--lightbluebluegray-ltor);
 }
 
-a:hover .link-text-underline,
-button:hover .link-text-underline {
-  text-decoration: underline;
-}
 .page-section-inline-img-container,
 .page-section-inline-img {
   height: 100%;
@@ -458,26 +454,23 @@ a.st-search-result-link:hover {
   }
   .secondary-page-navbar,
   .secondary-page-navbar-container {
-    height: 80px;
-    -webkit-transition: width 0.5s ease, height 0.5s ease, background-color 0.5s ease;
-    -moz-transition: width 0.5s ease, height 0.5s ease, background-color 0.5s ease;
-    transition: width 0.5s ease, height 0.5s ease, background-color 0.5s ease;
-    background-color: transparent;
-    margin-top: -40px;
-  }
-  .secondary-page-navbar-container {
-    margin-top: 0px;
-    border-radius: var(--bs-border-radius);
-    background: linear-gradient(180deg, rgba(3, 86, 122, 1), rgba(var(--navy-rgb), 1));
-    width: 100vw;
-  }
-  .secondary-page-navbar-subhome,
-  .secondary-page-navbar-subhome-container {
-    height: 110px;
     -webkit-transition: width 0.5s ease, height 0.5s ease;
     -moz-transition: width 0.5s ease, height 0.5s ease;
     transition: width 0.5s ease, height 0.5s ease;
-    background-color: var(--navy);
+  }
+  .secondary-page-navbar-container {
+    border-radius: var(--bs-border-radius);
+    width: 100vw;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .secondary-page-navbar-subhome,
+  .secondary-page-navbar-subhome-container {
+    min-height: auto; /* 改为自动高度 */
+    -webkit-transition: width 0.5s ease, height 0.5s ease;
+    -moz-transition: width 0.5s ease, height 0.5s ease;
+    transition: width 0.5s ease, height 0.5s ease;
+    background-color: transparent; /* 默认透明 */
     margin-top: 0;
   }
   .secondary-page-navbar-subhome-container {
@@ -504,10 +497,9 @@ a.st-search-result-link:hover {
     top: 24px;
     bottom: 24px;
   }
-  .secondary-page-navbar.nav-container-sticky,
-  .secondary-page-navbar.nav-container-sticky .secondary-page-navbar-container {
-    background: linear-gradient(180deg, rgba(3, 86, 122, 1), rgba(var(--navy-rgb), 1));
-    height: 53px;
+  .secondary-page-navbar.is-sticky,
+  .secondary-page-navbar.is-sticky .secondary-page-navbar-container {
+    min-height: auto; /* 改为自动高度 */
   }
   .secondary-page-navbar.nav-container-sticky .secondary-page-navbar-container {
     margin-top: 0;
@@ -3134,6 +3126,7 @@ ul.footer-nav-list {
 li.footer-nav-list-item {
   margin: 0.5rem 0;
 }
+.footer-nav-list-item > button,
 .footer-nav-list-item a {
   text-decoration: none;
   padding: 0.3rem 0.3rem;
@@ -3578,8 +3571,8 @@ main.campaign-page-template {
     padding: 0 1rem 0 3rem;
   }
   .page-section-home-map {
-    padding-bottom: 11rem;
-    padding-top: 7rem;
+    padding-bottom: 4rem;
+    padding-top: 4rem;
   }
   .rainbow-dot-map-img {
     width: 50rem;

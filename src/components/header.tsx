@@ -5,10 +5,12 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Link from 'next/link';
 import { Button, Dropdown, Menu, MenuProps } from 'antd';
 import { useState } from 'react';
+import { useAccount } from 'wagmi';
 
 export default function Header({ lang, locale }: ParamProps) {
   const dict = lang.dict;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isConnected } = useAccount();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,7 +20,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '1',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/family-trust/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/family-trust/`}>
           {dict.header.family}
         </Link>
       ),
@@ -26,7 +28,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '2',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/enterprise/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/enterprise/`}>
           {dict.header.enterprise}
         </Link>
       ),
@@ -34,7 +36,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '3',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/dao/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/dao/`}>
           {dict.header.dao}
         </Link>
       ),
@@ -42,7 +44,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '4',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/rwa/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/rwa/`}>
           {dict.header.rwa}
         </Link>
       ),
@@ -50,7 +52,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '5',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/vesting/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/vesting/`}>
           {dict.header.vesting}
         </Link>
       ),
@@ -58,7 +60,7 @@ export default function Header({ lang, locale }: ParamProps) {
     {
       key: '6',
       label: (
-        <Link rel="noopener noreferrer" href="/solutions/compliance/">
+        <Link rel="noopener noreferrer" href={`/${locale.lang}/solutions/compliance/`}>
           {dict.header.compliance2}
         </Link>
       ),
@@ -157,18 +159,23 @@ export default function Header({ lang, locale }: ParamProps) {
   ];
 
   return (
-    <header className="header-container fixed-top bg-white">
+    <header className="header-container sticky-top bg-white">
       <Link className="visually-hidden-focusable skip-to-main-link" href="#main-content">
         Skip to main content
       </Link>
       <nav aria-label="site" className="navbar main-nav navbar-expand-lg pt-0 pb-0">
         <div className="container-fluid container-xl nav-container">
           <div className="navbar-brand-container d-flex align-items-center justify-content-between">
-            <Link className="navbar-brand nav-logo-link ms-2" href="/">
+            <Link className="navbar-brand nav-logo-link ms-2" href={`/${locale.lang}/`}>
               <img
                 className="nav-logo-img"
                 src="/images/logo.png"
                 alt="CSC - We are the business behind business"
+                style={{ 
+                  maxHeight: '50px',
+                  width: 'auto',
+                  objectFit: 'contain'
+                }}
               />
             </Link>
             {/* 添加汉堡菜单按钮 */}
@@ -186,37 +193,41 @@ export default function Header({ lang, locale }: ParamProps) {
             </button>
           </div>
           <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav me-auto">
               {/* 使用 Ant Design 的 Dropdown 组件 */}
               <li className="nav-item">
                 <Dropdown menu={{ items }} trigger={['click']}>
-                  <a className="nav-link avenir-heavy text-uppercase" onClick={(e) => e.preventDefault()}>
-                    {dict.header.solutions} <span className="csc-icon-sm c-i-arrow-thin-down text-teal ms-2"></span>
+                  <a className="nav-link avenir-heavy text-uppercase d-flex align-items-center" onClick={(e) => e.preventDefault()}>
+                    {dict.header.solutions} <span className="csc-icon-sm c-i-arrow-thin-down ms-1" style={{color: 'var(--primary-color)'}}></span>
                   </a>
                 </Dropdown>
               </li>
               <li className="nav-item">
                 <Dropdown menu={{ items: itemsKnowledge }} trigger={['click']}>
-                  <a className="nav-link avenir-heavy text-uppercase" onClick={(e) => e.preventDefault()}>
-                    {dict.header.knowledge} <span className="csc-icon-sm c-i-arrow-thin-down text-teal ms-2"></span>
+                  <a className="nav-link avenir-heavy text-uppercase d-flex align-items-center" onClick={(e) => e.preventDefault()}>
+                    {dict.header.knowledge} <span className="csc-icon-sm c-i-arrow-thin-down ms-1" style={{color: 'var(--primary-color)'}}></span>
                   </a>
                 </Dropdown>
               </li>
               <li className="nav-item">
-                <Link className="nav-link avenir-heavy text-uppercase" href="/about/">
+                <Link className="nav-link avenir-heavy text-uppercase" href={`/${locale.lang}/about/`}>
                   {dict.header.about}
                 </Link>
               </li>
-              <li className="nav-item">
-
-              <Link className="nav-link avenir-heavy text-uppercase" href="/dashboard/">
-                {dict.header.dashboard}
-              </Link>
-            
-     
-              </li>
             </ul>
-           
+            
+            {/* 右侧按钮区域 */}
+            <div className="d-flex align-items-center gap-2">
+              {isConnected ? (
+                <Link href={`/${locale.lang}/dashboard/`} className="btn-header-action">
+                  {dict.header.dashboard}
+                </Link>
+              ) : (
+                <span className="connect-wallet-text">
+                  {dict.header.contect}
+                </span>
+              )}
+            </div>
           </div>
           
         </div>

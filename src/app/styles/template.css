@@ -2370,7 +2370,6 @@ ul.breadcrumb:before {
   top: 2px;
 }
 
-.secondary-page-hero,
 .contact-page-hero-top {
   margin-top: 100px;
 }
@@ -3501,7 +3500,6 @@ p.testimonial-author {
 
   /* Secondary content page styles*/
   /* Default template */
-  .secondary-page-hero,
   .contact-page-hero-top {
     margin-top: 110px;
   }
@@ -4646,7 +4644,6 @@ p.testimonial-author {
 
   /* Secondary content page styles*/
   /* Default template */
-  .secondary-page-hero,
   .contact-page-hero-top {
     margin-top: 130px;
   }

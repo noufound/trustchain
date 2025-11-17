@@ -1,124 +1,109 @@
-import '../../styles/core-css-style.css'
-import '../../styles/ux.css'
-import '../../styles/_root.scss';
+import "../../styles/core-css-style.css";
+import "../../styles/ux.css";
+import "../../styles/_root.scss";
+import "../../styles/about.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { getDictionary } from '@/dictionaries';
-import { PageProps } from '@/types/params';
-import Link from 'next/link';
-export const runtime = 'edge';
-
+import { getDictionary } from "@/dictionaries";
+import { PageProps } from "@/types/params";
+import Link from "next/link";
+import Image from "next/image";
+export const runtime = "edge";
 
 export default async function Home({ params }: PageProps) {
-    const { lang } = await params;
+  const { lang } = await params;
 
-    const dict = await getDictionary(lang); // 确保 getDictionary 正常工作
-  console.log('dict:', lang);
+  const dict = await getDictionary(lang); // 确保 getDictionary 正常工作
+  console.log("dict:", lang);
 
   return (
-    <div id="pageTop" className="secondary-page private-client-services item-1703">
-      <div id="hs-web-interactives-top-push-anchor" className="go3670563033"></div>
+    <div
+      id="pageTop"
+      className="secondary-page private-client-services item-1703"
+    >
       <Header lang={{ dict }} locale={{ lang }} />
       <main
-        className="colors-teal-purple service-page-template"
+        className="about-page-main"
         id="main-content"
         tabIndex={-1}
         itemProp="articleBody"
       >
-        <section aria-labelledby="hero-headline" id="hero" className="page-section page-section-hero page-section-set-bg-image overlay-navyteal-ltor position-relative in-view" data-page-section-bg="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/headers/Herowave-1300x86713.jpg" tabIndex={0} style={{ backgroundImage: "none" }}>
-          <div className="container-fluid container-xl py-lg-5 position-relative z-index-1">
-              <div className="row row-cols-1 row-cols-lg-2 gx-4 gx-xl-5 hero-row hero-row-boxes">
-                  <div className="col-12 col-lg-7 col-xxl-8 pt-5 pt-lg-0 mb-lg-4 ps-3">
-                      <div className="card h-100 hero-left-box bg-white shadow border-0">
-                          <div className="card-body px-5 pt-4 pb-5">
-                              <div className="breadcrumbs-container mt-3 mx-xxl-4">
-                                  <div className="row hero-row breadcrumbs-hero-row">
-                                      <nav aria-label="breadcrumb" className="page-breadcrumbs hero-col-left-breadcrumbs" 
-                                      // data-icon-bg-className="bg-purplepink-ltor"
-                                      >
-                                          
-<ol className="breadcrumb breadcrumb-default align-items-center">
-    <li className="breadcrumb-item home-icon lh-1">
-        <Link href="/cscglobal/home/">
-            <span className="csc-icon-sm c-i-home breadcrumbs-home text-white rounded-circle px-2 py-2 bg-purplepink-ltor" aria-hidden="true"></span>
-            <span className="visually-hidden">Home</span>
-        </Link>
-    </li>
-
-    <li className="breadcrumb-item lh-1">{dict.about.heroTitle}</li></ol>
-
-                                      </nav>
-                                  </div>
-                              </div>
-                              <div className="hero-headline-container mt-4 mx-xxl-4">
-                                  <div className="section-headline-top-border section-headline-top-border bg-purple"></div>
-                                  <h1 id="hero-headline" className="text-navy lh-1 display-5">{dict.about.heroTitle}</h1>
-                                  <p className="mt-3 mt-lg-4 pe-lg-3 pe-xl-5">{dict.about.heroSubtitle}</p>
-                                  {/* <div className="hero-left-button my-4 mt-lg-5">
-                                      <Link className="btn btn-navy rounded-pill text-uppercase" href="#section1">
-                                          Learn more
-                                          <span className="visually-hidden"> about private client services</span>
-                                      </Link>
-                                  </div> */}
-                              </div>
-                          </div>
+        <section
+          aria-labelledby="hero-headline"
+          id="hero"
+          className="about-hero-section position-relative"
+          tabIndex={0}
+        >
+          <div className="container-fluid container-xl py-5 position-relative">
+            <div className="row gx-4 gx-xl-5 align-items-stretch">
+              <div className="col-12 col-lg-7 col-xxl-8 mb-4 mb-lg-0">
+                <div className="about-hero-card h-100 bg-white shadow-lg rounded-4 overflow-hidden">
+                  <div className="card-body p-4 p-lg-5">
+                    <div className="about-hero-content">
+                      <div className="about-hero-border mb-3"></div>
+                      <h1
+                        id="hero-headline"
+                        className="about-hero-title display-6 fw-bold mb-4"
+                      >
+                        {dict.about.heroTitle}
+                      </h1>
+                      <p className="about-hero-subtitle fs-5 text-muted mb-4">
+                        {dict.about.heroSubtitle}
+                      </p>
+                      <div className="about-hero-image-wrapper rounded-3 overflow-hidden mt-4">
+                        <Image
+                          src="/images/about.jpg"
+                          alt="about us"
+                          width={800}
+                          height={600}
+                          className="img-fluid about-hero-image"
+                          priority
+                        />
                       </div>
+                    </div>
                   </div>
-                  <div className="col-12 col-lg-5 col-xxl-4 border-0 py-5 py-lg-0 mb-lg-4 pe-3">
-                      <div className="card h-100 bg-white shadow px-3">
-                          <div className="card-body px-3 pt-3 pb-4">
-                              <div className="csc-contact-container-headline border border-2 border-purple border-start-0 border-end-0 border-top-0 text-center mt-xl-2">
-                                  <h2 className="text-uppercase text-navy fs-5 mt-1 avenir-black">{dict.contact.title}</h2>
-                              </div>
-                              {/* <div className="d-flex justify-content-end">
-                                  <p className="required-text-copy mt-1 mb-1 pb-0 form-disclosure-text text-darkgray">All fields marked with <span className="text-danger avenir-heavy">*</span> are required.</p>
-                              </div> */}
-                              <div>
-                                <div className="contact-card bg-white rounded-2xl p-8 mb-10">
-            <div className="prose max-w-none mb-8 text-gray-600 leading-relaxed">
-                <p>{dict.contact.desc}</p>
-            </div>
-
-            <div className="text-center mb-10">
-                <a href="mailto:88888888@gmail.com?subject=咨询链上信托服务" className="">
-                    <i className="fa fa-paper-plane mr-2"></i>
-                    {dict.contact.button1}
-                </a>
-            </div>
-
-            <div className="flex items-center my-8">
-                <div className="flex-grow h-px bg-gray-200"></div>
-                <span className="px-4 text-gray-400 font-medium">{dict.contact.button2}</span>
-                <div className="flex-grow h-px bg-gray-200"></div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex items-start p-4 rounded-lg bg-blue-50">
-                    <div className="bg-blue-100 p-3 rounded-full mr-4">
-                        <i className="fa fa-phone text-blue-600 text-xl"></i>
-                    </div>
-                    <div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-1">{dict.contact.phone}</h3>
-                        <a href="tel:+85268745045" className="text-gray-600 hover:text-blue-600 transition-colors">
-                            +852 6874 5045
-                        </a>
-                    </div>
                 </div>
-                <div className="flex items-start p-4 rounded-lg bg-blue-50">
-                    <div className="bg-blue-100 p-3 rounded-full mr-4">
-                        <i className="fa fa-envelope text-blue-600 text-xl"></i>
+              </div>
+              <div className="col-12 col-lg-5 col-xxl-4">
+                <div className="about-contact-card h-100 bg-white shadow-lg rounded-4">
+                  <div className="card-body p-4 p-lg-5">
+                    <div className="about-contact-header text-center mb-4">
+                      <div className="about-contact-icon-wrapper mx-auto mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                      </div>
+                      <h2 className="about-contact-title fs-4 fw-bold mb-2">
+                        {dict.contact.title}
+                      </h2>
+                      <p className="about-contact-desc text-muted mb-4">
+                        {dict.contact.desc}
+                      </p>
                     </div>
-                    <div>
-                        <h3 className="text-lg font-semibold text-gray-800 mb-1">{dict.contact.email}</h3>
-                        <a href="mailto:88888888@gmail.com" className="text-gray-600 hover:text-blue-600 transition-colors">
-                            88888888@gmail.com
-                        </a>
+
+                    <div className="about-contact-actions">
+                      <a
+                        href="mailto:88888888@gmail.com?subject=咨询链上信托服务"
+                        className="about-contact-btn btn btn-primary-custom w-100 mb-3"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="me-2">
+                          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                        </svg>
+                        {dict.contact.button1}
+                      </a>
+                      <div className="about-contact-email-box text-center p-3 bg-light rounded-3">
+                        <div className="mb-2">
+                          <strong className="d-block mb-1">{dict.contact.email}</strong>
+                          <a
+                            href="mailto:puredriftvision@gmail.com?subject=咨询链上信托服务"
+                            className="about-email-link"
+                          >
+                            puredriftvision@gmail.com
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-                              </div>
-                            {/* <form
+                    {/* <form
                             className="contact-form csc-form csc-lead-form csc-sales-form row g-3 csc-form-validate mt-xl-3 mt-xxl-1"
                             id="cscgMarketingLead"
                             name="cscgMarketingLead"
@@ -448,686 +433,417 @@ export default async function Home({ params }: PageProps) {
                 <div className="spinner-sm"></div>
                 <div className="lead-form-overlay"></div>
                             </form> */}
-
-                          </div>
-                      </div>                        
                   </div>
+                </div>
               </div>
+            </div>
           </div>
-      </section>
+        </section>
 
-      <nav aria-label="page" id="secondaryNav" className="navbar sticky-top secondary-page-navbar d-none d-lg-flex py-0 nav-container-sticky">
-          <div className="container-fluid container-xl secondary-page-navbar-container">
-              <ul className="nav secondary-nav nav-fill">
-                  <li className="nav-item secondary-nav-item position-relative">
-                      <Link className="nav-link secondary-page-nav-link text-white link-with-icon avenir-medium d-flex align-items-center justify-content-center" href="#section1">
-                          <span aria-hidden="true" className="csc-icon c-i-question me-2"></span>
-                          <span className="link-text-underline">{dict.about.whoWeAreSectionTitle}</span>
-                      </Link>
-                      <div id="section1-indicator" className="active-section-indicator bg-teal"></div>
-                  </li>
-                  <li className="nav-item secondary-nav-item position-relative">
-                      <Link className="nav-link secondary-page-nav-link text-white link-with-icon avenir-medium d-flex align-items-center justify-content-center" href="#section2">
-                          <span aria-hidden="true" className="csc-icon c-i-handshake me-2"></span>
-                          <span className="link-text-underline">{dict.about.cooperationSectionTitle}</span>
-                      </Link>
-                      <div id="section2-indicator" className="active-section-indicator bg-teal"></div>
-                  </li>
-                  <li className="nav-item secondary-nav-item position-relative">
-                      <Link className="nav-link secondary-page-nav-link text-white link-with-icon avenir-medium d-flex align-items-center justify-content-center" href="#section3">
-                          <span aria-hidden="true" className="csc-icon c-i-layers-stack me-2"></span>
-                          <span className="link-text-underline">{dict.about.riskSectionTitle}</span>
-                      </Link>
-                      <div id="section3-indicator" className="active-section-indicator bg-teal"></div>
-                  </li>
-              </ul>
+        <nav
+          aria-label="page"
+          id="secondaryNav"
+          className="about-nav navbar sticky-top d-none d-lg-flex py-0"
+        >
+          <div className="container-fluid container-xl">
+            <ul className="nav secondary-nav nav-fill w-100">
+              <li className="nav-item secondary-nav-item position-relative flex-fill">
+                <Link
+                  className="about-nav-link nav-link d-flex align-items-center justify-content-center py-3"
+                  href="#section1"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="me-2">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                  </svg>
+                  <span>{dict.about.whoWeAreSectionTitle}</span>
+                </Link>
+                <div
+                  id="section1-indicator"
+                  className="about-nav-indicator"
+                ></div>
+              </li>
+              <li className="nav-item secondary-nav-item position-relative flex-fill">
+                <Link
+                  className="about-nav-link nav-link d-flex align-items-center justify-content-center py-3"
+                  href="#section2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="me-2">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                  </svg>
+                  <span>{dict.about.cooperationSectionTitle}</span>
+                </Link>
+                <div
+                  id="section2-indicator"
+                  className="about-nav-indicator"
+                ></div>
+              </li>
+              <li className="nav-item secondary-nav-item position-relative flex-fill">
+                <Link
+                  className="about-nav-link nav-link d-flex align-items-center justify-content-center py-3"
+                  href="#section3"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="me-2">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                  </svg>
+                  <span>{dict.about.riskSectionTitle}</span>
+                </Link>
+                <div
+                  id="section3-indicator"
+                  className="about-nav-indicator"
+                ></div>
+              </li>
+            </ul>
           </div>
-      </nav>
-      <div className="sticky-indicator position-absolute"></div>
+        </nav>
+        <div className="sticky-indicator position-absolute"></div>
 
-      <section aria-labelledby="section1-headline" id="section1" className="page-section bg-white px-3 px-xl-0 py-5" tabIndex={0}>
-          <div className="container-fluid container-xl page-section-container pe-xl-0">
-              <div className="row justify-content-between">
-                  <div className="col-12 pb-5">
-                      <div className="mx-2 mx-md-3 mx-xl-0">
-                          <div className="page-section-headline-container mb-4">
-                              <div className="section-headline-top-border bg-teal"></div>
-                              <h2 id="section1-headline" className="text-navy display-6">{dict.about.whoWeAreSectionTitle}</h2>
-                          </div>
-                          <p>{dict.about.whoWeAreDescription}<br/><br/>{dict.about.whoWeAreRoleIntro}</p>
-                          <div id="whyCscStats" className="row row-cols-md-2 g-4 g-lg-5 page-section-content justify-content-center mt-5">
-                              <div className="col-12 col-md-6 col-lg-5 csc-card-col">
-                                  <div className="card csc-card h-100 border-0 d-flex flex-column align-items-center bg-transparent text-center">
-                                      <div className="stat-number-text-container d-flex flex-column align-items-center text-center px-3 mb-1">
-                                          <span aria-hidden="true" className="csc-icon-xxl c-i-international text-purple"></span>
-                                      </div>
-                                      <h3 className="text-default fs-4 mt-3 px-4">{dict.about.whoWeAreRole1Title}</h3>
-                                      
-                                      <p className="px-4 my-1 pb-0 mt-3">
-                                          {dict.about.whoWeAreRole1Content} 
-                                      </p>
-                                  </div>
-                              </div>
-                              <div className="col-12 col-md-6 col-lg-5 csc-card-col border-before-lg position-relative">
-                                  <div className="card csc-card h-100 border-0 d-flex flex-column align-items-center bg-transparent text-center">
-                                      <div className="stat-number-text-container d-flex flex-column align-items-center text-center px-3 mb-1">
-                                          <span aria-hidden="true" className="csc-icon-xxl c-i-map-location text-purple"></span>
-                                      </div>
-                                      <h3 className="text-default fs-4 mt-3 px-4">{dict.about.whoWeAreRole2Title}</h3>
-                                      
-                                      <p className="px-4 my-1 pb-0 mt-3">
-                                           {dict.about.whoWeAreRole2Content} 
-                                      </p>
-                                  </div>
-                              </div>
-                              <div className="col-12 col-md-6 col-lg-5 csc-card-col border-before-lg position-relative">
-                                  <div className="card csc-card h-100 border-0 d-flex flex-column align-items-center bg-transparent text-center">
-                                      <div className="stat-number-text-container d-flex flex-column align-items-center text-center px-3 mb-1">
-                                          <span aria-hidden="true" className="csc-icon-xxl c-i-map-location text-purple"></span>
-                                      </div>
-                                      <h3 className="text-default fs-4 mt-3 px-4">{dict.about.whoWeAreRole3Title}</h3>
-                                      
-                                      <p className="px-4 my-1 pb-0 mt-3">
-                                           {dict.about.whoWeAreRole3Content} 
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                          <p>{dict.about.whoWeAreBelief}</p>
+        <section
+          aria-labelledby="section1-headline"
+          id="section1"
+          className="about-section-1 bg-light py-5"
+          tabIndex={0}
+        >
+          <div className="container-fluid container-xl">
+            <div className="row justify-content-center">
+              <div className="col-12 col-xl-10">
+                <div className="about-section-header text-center mb-5">
+                  <div className="about-section-border mx-auto mb-3"></div>
+                  <h2 id="section1-headline" className="about-section-title display-5 fw-bold mb-4">
+                    {dict.about.whoWeAreSectionTitle}
+                  </h2>
+                  <p className="about-section-desc fs-5 text-muted mb-4">
+                    {dict.about.whoWeAreDescription}
+                  </p>
+                  <p className="about-section-intro fs-6 text-muted">
+                    {dict.about.whoWeAreRoleIntro}
+                  </p>
+                </div>
+                
+                <div className="row g-4 justify-content-center mt-4">
+                  <div className="col-12 col-md-6 col-lg-4">
+                    <div className="about-role-card h-100 bg-white rounded-4 shadow-sm p-4 text-center">
+                      <div className="about-role-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+                        </svg>
                       </div>
+                      <h3 className="about-role-title fs-5 fw-bold mb-3">
+                        {dict.about.whoWeAreRole1Title}
+                      </h3>
+                      <p className="about-role-desc text-muted mb-0">
+                        {dict.about.whoWeAreRole1Content}
+                      </p>
+                    </div>
                   </div>
+                  
+                  <div className="col-12 col-md-6 col-lg-4">
+                    <div className="about-role-card h-100 bg-white rounded-4 shadow-sm p-4 text-center">
+                      <div className="about-role-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                      </div>
+                      <h3 className="about-role-title fs-5 fw-bold mb-3">
+                        {dict.about.whoWeAreRole2Title}
+                      </h3>
+                      <p className="about-role-desc text-muted mb-0">
+                        {dict.about.whoWeAreRole2Content}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="col-12 col-md-6 col-lg-4">
+                    <div className="about-role-card h-100 bg-white rounded-4 shadow-sm p-4 text-center">
+                      <div className="about-role-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                        </svg>
+                      </div>
+                      <h3 className="about-role-title fs-5 fw-bold mb-3">
+                        {dict.about.whoWeAreRole3Title}
+                      </h3>
+                      <p className="about-role-desc text-muted mb-0">
+                        {dict.about.whoWeAreRole3Content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="about-belief-box text-center mt-5 p-4 bg-white rounded-4 shadow-sm">
+                  <p className="fs-5 text-muted mb-0">{dict.about.whoWeAreBelief}</p>
+                </div>
               </div>
+            </div>
           </div>
-      </section>
+        </section>
 
-      <section aria-labelledby="section2-headline" id="section2" className="page-section bg-lightergray px-3 px-xl-0 py-5" tabIndex={0}>
-          <div className="container-fluid container-xl page-section-container">
-              <div className="row mx-2 mx-md-3 mx-xl-0">
+        <section
+          aria-labelledby="section2-headline"
+          id="section2"
+          className="about-section-2 bg-white py-5"
+          tabIndex={0}
+        >
+          <div className="container-fluid container-xl">
+            <div className="row justify-content-center">
+              <div className="col-12 col-xl-10">
+                <div className="about-section-header text-center mb-5">
+                  <div className="about-section-border mx-auto mb-3"></div>
+                  <h2 id="section2-headline" className="about-section-title display-5 fw-bold mb-4">
+                    {dict.about.cooperationSectionTitle}
+                  </h2>
+                </div>
+                
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
                   <div className="col">
-                      <div className="page-section-headline-container mb-3 mt-3 ms-2 ms-md-0">
-                          <div className="section-headline-top-border bg-purple"></div>
-                          <h2 id="section2-headline" className="text-navy display-6">{dict.about.cooperationSectionTitle}</h2>
+                    <div className="about-cooperation-card h-100">
+                      <div className="about-cooperation-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.135Z"/>
+                          <path d="M8.5 1.866a1 1 0 1 0-1 0V3h-2A4.5 4.5 0 0 0 1 7.5V8a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v1a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1v-.5A4.5 4.5 0 0 0 10.5 3h-2V1.866ZM14 7.5V13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.5A3.5 3.5 0 0 1 5.5 4h5A3.5 3.5 0 0 1 14 7.5Z"/>
+                        </svg>
                       </div>
-                  </div>
-              </div>
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 page-section-service-tiles mb-5 mt-0 px-xl-4 justify-content-center">
-                  <div className="col col-12 col-md-6 col-lg-4 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card h-100 shadow bg-purplepink-navyteal-hover">
-
-                          
-
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper d-flex align-items-center justify-content-center">
-                                <div className="resource-tile-image-container">
-                                    <span aria-hidden="true" className="csc-icon c-i-org-chart-flat-gear text-white"></span>
-                                </div>
-                            </div>
-                            <div className="card-body-middle">
-                                <h3 className="card-title text-navy mt-4 px-4 text-center">{dict.about.cooperationCard1Title}</h3>
-                            </div>
-                            <div className="card-body-lower mt-3 pt-3 pb-4 text-center">
-                                {dict.about.cooperationCard1Content}
-                            </div>
-                        </div>
-
-
-                      </div>
+                      <h3 className="about-cooperation-title fs-5 fw-bold mb-3">
+                        {dict.about.cooperationCard1Title}
+                      </h3>
+                      <p className="about-cooperation-desc text-muted mb-0">
+                        {dict.about.cooperationCard1Content}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="col col-12 col-md-6 col-lg-4 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card h-100 shadow bg-purplepink-navyteal-hover">
-
-                          
-
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper d-flex align-items-center justify-content-center">
-                                <div className="resource-tile-image-container">
-                                    <span aria-hidden="true" className="csc-icon c-i-home text-white"></span>
-                                </div>
-                            </div>
-                            <div className="card-body-middle">
-                                <h3 className="card-title text-navy mt-4 px-4 text-center">{dict.about.cooperationCard2Title}</h3>
-                            </div>
-                            <div className="card-body-lower mt-3 pt-3 pb-4 text-center">
-                                {dict.about.cooperationCard2Content}
-
-                                {/* <Link href="/service/entity-solutions/private-client-services/estate-planning/" className="btn btn-navy text-uppercase">
-                                    Learn more
-                                    <span className="visually-hidden"> about succession and estate planning</span>
-                                </Link> */}
-                            </div>
-                        </div>
-
-
-                      </div>
-                  </div>
-
-                  <div className="col col-12 col-md-6 col-lg-4 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card h-100 shadow bg-purplepink-navyteal-hover">
-
-                          
-
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper d-flex align-items-center justify-content-center">
-                                <div className="resource-tile-image-container">
-                                    <span aria-hidden="true" className="csc-icon c-i-team-full text-white"></span>
-                                </div>
-                            </div>
-                            <div className="card-body-middle">
-                                <h3 className="card-title text-navy mt-4 px-4 text-center">{dict.about.cooperationCard3Title}</h3>
-                            </div>
-                            <div className="card-body-lower mt-3 pt-3 pb-4 text-center">
-                                {dict.about.cooperationCard3Content}
-                                {/* <Link href="/service/entity-solutions/private-client-services/family-office-services/" className="btn btn-navy text-uppercase">
-                                    Learn more
-                                    <span className="visually-hidden"> about family office services</span>
-                                </Link> */}
-                            </div>
-                        </div>
-
-
-                      </div>
-                  </div>
-                                    
-                
-
-                      <div className="col col-12 col-md-6 col-lg-4 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card h-100 shadow bg-purplepink-navyteal-hover">
-
-                          
-
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper d-flex align-items-center justify-content-center">
-                                <div className="resource-tile-image-container">
-                                    <span aria-hidden="true" className="csc-icon c-i-team-full text-white"></span>
-                                </div>
-                            </div>
-                            <div className="card-body-middle">
-                                <h3 className="card-title text-navy mt-4 px-4 text-center">{dict.about.cooperationCard4Title}</h3>
-                            </div>
-                            <div className="card-body-lower mt-3 pt-3 pb-4 text-center">
-                                {dict.about.cooperationCard4Content}
-                                {/* <Link href="/service/entity-solutions/private-client-services/family-office-services/" className="btn btn-navy text-uppercase">
-                                    Learn more
-                                    <span className="visually-hidden"> about family office services</span>
-                                </Link> */}
-                            </div>
-                        </div>
-
-
-                      </div>
-                  </div>
-
-                        <div className="col col-12 col-md-6 col-lg-4 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card h-100 shadow bg-purplepink-navyteal-hover">
-
-                          
-
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper d-flex align-items-center justify-content-center">
-                                <div className="resource-tile-image-container">
-                                    <span aria-hidden="true" className="csc-icon c-i-team-full text-white"></span>
-                                </div>
-                            </div>
-                            <div className="card-body-middle">
-                                <h3 className="card-title text-navy mt-4 px-4 text-center">{dict.about.cooperationCard5Title}</h3>
-                            </div>
-                            <div className="card-body-lower mt-3 pt-3 pb-4 text-center">
-                                {dict.about.cooperationCard5Content}
-                                {/* <Link href="/service/entity-solutions/private-client-services/family-office-services/" className="btn btn-navy text-uppercase">
-                                    Learn more
-                                    <span className="visually-hidden"> about family office services</span>
-                                </Link> */}
-                            </div>
-                        </div>
-
-
-                      </div>
-                  </div>
-
-              </div>
-          </div>
-      </section>
-
-      <section aria-labelledby="section3-headline" id="section3" className="page-section bg-lightestgray px-3 px-xl-0 py-5" tabIndex={0}>
-          <div className="container-fluid container-xl page-section-container">
-              <div className="row mx-2 mx-md-3 mx-xl-0">
                   <div className="col">
-                      <div className="page-section-headline-container mb-3 mt-3 ms-2 ms-md-0">
-                          <div className="section-headline-top-border bg-teal"></div>
-                          <h2 id="section3-headline" className="text-navy display-6">{dict.about.keyComplianceTitle}</h2>
+                    <div className="about-cooperation-card h-100">
+                      <div className="about-cooperation-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                        </svg>
                       </div>
+                      <h3 className="about-cooperation-title fs-5 fw-bold mb-3">
+                        {dict.about.cooperationCard2Title}
+                      </h3>
+                      <p className="about-cooperation-desc text-muted mb-0">
+                        {dict.about.cooperationCard2Content}
+                      </p>
+                    </div>
                   </div>
+
+                  <div className="col">
+                    <div className="about-cooperation-card h-100">
+                      <div className="about-cooperation-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        </svg>
+                      </div>
+                      <h3 className="about-cooperation-title fs-5 fw-bold mb-3">
+                        {dict.about.cooperationCard3Title}
+                      </h3>
+                      <p className="about-cooperation-desc text-muted mb-0">
+                        {dict.about.cooperationCard3Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-cooperation-card h-100">
+                      <div className="about-cooperation-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                        </svg>
+                      </div>
+                      <h3 className="about-cooperation-title fs-5 fw-bold mb-3">
+                        {dict.about.cooperationCard4Title}
+                      </h3>
+                      <p className="about-cooperation-desc text-muted mb-0">
+                        {dict.about.cooperationCard4Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-cooperation-card h-100">
+                      <div className="about-cooperation-icon-wrapper mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                          <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                        </svg>
+                      </div>
+                      <h3 className="about-cooperation-title fs-5 fw-bold mb-3">
+                        {dict.about.cooperationCard5Title}
+                      </h3>
+                      <p className="about-cooperation-desc text-muted mb-0">
+                        {dict.about.cooperationCard5Content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="row row-cols-1 row-cols-md-2 g-4 g-lg-5 page-section-resource-tiles mb-5 mt-0 px-xl-4 justify-content-around">
-
-                  <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-                        <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                            <div className="card-body-upper flex-fill bg-white pb-4">
-                                {/* <div className="resource-tile-image-container">
-                                    <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21417.jpg" alt=""/>
-                                </div>
-                                <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        Family Offices Buy into Private Equity—But They Expect Bespoke Service
-                                    </h3>
-                                </div> */}
-                                <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk1Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk1Content}
-                                    </p>
-                                </div>
-                            </div>
-                            {/* <div className="card-body-lower w-100">
-                                <Link href="https://blog.cscglobal.com/family-offices-buy-into-private-equity-but-they-expect-bespoke-service/" target="_blank" className="card-link link-with-icon card-link-resource">
-                                    <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                                
-                                    <span className="visually-hidden">Read more about Family Offices Buy into Private Equity - But They Expect Bespoke Service now</span>
-                                    <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                                </Link>
-                            </div> */}
-                        </div>
-                        <div className="d-none hidden-filter-data">
-                        
-                            
-                            <span className="filter-data-btn resource-type">blog</span>
-                        
-                        
-                            <span className="filter-data1 category">entity solutions</span>
-                            <span className="filter-data2"></span>
-
-                            <span className="month">September</span>
-                            <span className="year">2022</span>
-                        </div>
-
-
-                      </div>
-                  </div>
-
-                  <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk2Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk2Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-                                    <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk3Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk3Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-
-                                    <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk4Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk4Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-
-                                    <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk5Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk5Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-
-                                    <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk6Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk6Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-
-                                    <div className="col col-12 col-md-6 col-lg-5 csc-cta-card-col filter-item">
-                      <div className="card csc-cta-card bg-white zoom-card tile-border-grad-navyteal h-100 shadow">
-
-                          
-
-                <div className="card-body d-flex flex-column justify-content-between px-0 py-0">
-                    <div className="card-body-upper flex-fill bg-white pb-4">
-                        {/* <div className="resource-tile-image-container">
-                            <img aria-hidden="true" width="100%" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/resources/Resourcetile-400x21413.jpg" alt=""/>
-                        </div>
-                        <div className="resource-tile-text-container px-4 mt-4">
-                        
-                            <h3 className="card-title text-navy">
-                                Trustee Spotlight:<br/>
-                                <span className="fs-5 text-default avenir-medium">Why Managed Investments Need Regular Reviews</span>
-                            </h3>
-                        </div> */}
-                        <div className="resource-tile-text-container px-4 mt-4">
-                                
-                                    <h3 className="card-title text-navy">
-                                        {dict.about.risk7Title}
-                                    </h3>
-                                    <p>
-                                        {dict.about.risk7Content}
-                                    </p>
-                                </div>
-                    </div>
-                    {/* <div className="card-body-lower w-100">
-                        <Link href="https://blog.cscglobal.com/trustee-spotlight-why-managed-investments-need-regular-reviews/" target="_blank" className="card-link link-with-icon card-link-resource">
-                            <span aria-hidden="true" className="link-with-icon-text text-uppercase">Read more</span>
-                        
-                            
-                            <span className="visually-hidden">Read more about Trustee Spotlight: Why Managed Investments Need Regular Reviews now</span>
-                            <span aria-hidden="true" className="csc-icon c-i-arrow-right ms-2"></span>
-                        </Link>
-                    </div> */}
-                </div>
-                <div className="d-none hidden-filter-data">
-                
-                
-                    <span className="filter-data-btn resource-type">blog</span>
-                
-                
-                    <span className="filter-data1 category">entity solutions</span>
-                    <span className="filter-data2"></span>
-
-                    <span className="month">July</span>
-                    <span className="year">2022</span>
-                </div>
-
-
-                      </div>
-                  </div>
-
-              </div>
-              <div className="centered-cta-row text-center mt-5">
-                  <Link href="/service/resources/" className="btn btn-navy text-uppercase mt-4">View all resources</Link>
-              </div>
+            </div>
           </div>
-      </section>
-      
-</main>
- 
+        </section>
 
-        
+        <section
+          aria-labelledby="section3-headline"
+          id="section3"
+          className="about-section-3 bg-light py-5"
+          tabIndex={0}
+        >
+          <div className="container-fluid container-xl">
+            <div className="row justify-content-center">
+              <div className="col-12 col-xl-10">
+                <div className="about-section-header text-center mb-5">
+                  <div className="about-section-border mx-auto mb-3"></div>
+                  <h2 id="section3-headline" className="about-section-title display-5 fw-bold mb-4">
+                    {dict.about.keyComplianceTitle}
+                  </h2>
+                </div>
+                
+                <div className="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">01</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk1Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk1Content}
+                      </p>
+                    </div>
+                  </div>
 
-<div id="searchResultsModal" className="modal search-results-modal" tabIndex={-1}>
-    <div className="modal-dialog">
-        <div className="modal-content border border-3 border-teal">
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">02</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk2Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk2Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">03</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk3Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk3Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">04</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk4Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk4Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">05</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk5Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk5Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">06</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk6Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk6Content}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="col">
+                    <div className="about-risk-card h-100 bg-white rounded-4 shadow-sm p-4">
+                      <div className="about-risk-number mb-3">07</div>
+                      <h3 className="about-risk-title fs-5 fw-bold mb-3">
+                        {dict.about.risk7Title}
+                      </h3>
+                      <p className="about-risk-desc text-muted mb-0">
+                        {dict.about.risk7Content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div
+        id="searchResultsModal"
+        className="modal search-results-modal"
+        tabIndex={-1}
+      >
+        <div className="modal-dialog">
+          <div className="modal-content border border-3 border-teal">
             <div className="modal-header">
-                <span className="csc-icon csc-icon-md c-i-search text-teal d-none d-md-inline me-2"></span>
-                <h2 className="modal-title text-navy avenir-heavy text-uppercase h3">Search results</h2>
-                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <span className="csc-icon csc-icon-md c-i-search text-teal d-none d-md-inline me-2"></span>
+              <h2 className="modal-title text-navy avenir-heavy text-uppercase h3">
+                Search results
+              </h2>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div className="modal-body">
-                <div className="container-fluid">
-                    <div id="st-results-container"></div>
-                </div>
+              <div className="container-fluid">
+                <div id="st-results-container"></div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-
-
-<div id="footer-sticky-banner" className="footer-sticky-banner bg-purple z-index-1" data-paired-section-id="#hero">
-  <div className="container-fluid container-xl">
-    <div className="row py-2">
-      <div className="col d-flex justify-content-center align-items-center">
-        <p className="my-0 text-white avenir me-4 d-none d-md-block">Need help from our experts?</p>
-      	<Link href="#hero" className="btn btn-white-outline rounded-pill text-uppercase d-flex align-items-center py-2 px-3">
-          {dict.contact.title}
-          <span aria-hidden="true" className="csc-icon-sm c-i-arrow-up ms-2"></span>
-        </Link>
       </div>
+{/* 底部sticky 联系我们 */}
+      {/* <div
+        id="footer-sticky-banner"
+        className="about-footer-banner bg-primary-color"
+        data-paired-section-id="#hero"
+      >
+        <div className="container-fluid container-xl">
+          <div className="row py-3">
+            <div className="col d-flex justify-content-center align-items-center gap-3">
+              <p className="my-0 text-white fs-6 fw-medium d-none d-md-block">
+                {dict.contact.title}
+              </p>
+              <Link
+                href="#hero"
+                className="btn btn-light rounded-pill text-uppercase d-flex align-items-center py-2 px-4 fw-bold"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" className="me-2">
+                  <path fillRule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+                </svg>
+                {dict.contact.title}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      <Footer lang={{ dict }} locale={{ lang }} />
     </div>
-  </div>
-</div>
-
-<Footer lang={{ dict }} locale={{ lang }}/>
-
-
-
-
-</div>
-
   );
 }

@@ -4,6 +4,8 @@ import '../styles/_root.scss';
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import StockCard from "@/components/StockCard";
+import SecondaryNav from "@/components/SecondaryNav";
+import MapWithRoutes from "@/components/MapWithRoutes";
 import { getDictionary } from "@/dictionaries"; // 添加导入
 import { PageProps } from '@/types/params';
 import Link from 'next/link';
@@ -66,13 +68,60 @@ export default async function Home({ params }: PageProps) {
   const { lang } = await params;
   const dict = await getDictionary(lang) // en
   console.log('dict:', lang);
+  
+  // 地图城市坐标配置
+  const mapCities = {
+    // 三大核心枢纽
+    hongKong: { x: 77.8, y: 50.5 },
+    singapore: { x: 74.3, y: 59.3 },
+    tokyo: { x: 84.6, y: 44.3 },
+    // 辐射城市
+    seoul: { x: 81.5, y: 42.2 },
+    newDelhi: { x: 66.7, y: 53 },
+    sydney: { x: 88.2, y: 78.8 },
+    kualaLumpur: { x: 73.6, y: 57 },
+    dubai: { x: 60.1, y: 51.8 },
+    berlin: { x: 50.4, y: 35.3 },
+    moscow: { x: 60.1, y: 23.6 },
+    saoPaulo: { x: 30.9, y: 78.3 },
+    toronto: { x: 88.2, y: 83.4 },
+    newYork: { x: 13.9, y: 41.1 },
+  };
+
+  // 地图航线配置（格式：[起点, 终点]）
+  const mapRoutes = {
+    hongKong: ['seoul', 'newDelhi', 'sydney', 'kualaLumpur', 'newYork'],
+    singapore: ['sydney', 'dubai', 'berlin', 'moscow'],
+    tokyo: ['newYork', 'moscow', 'seoul', 'saoPaulo', 'toronto'],
+  };
+  
+  // 导航项配置
+  const navItems = [
+    {
+      id: 'section1',
+      label: dict.home.feature1,
+      icon: 'c-i-briefcase' // 产品与方案 - 公文包图标
+    },
+    {
+      id: 'section2',
+      label: dict.home.feature2,
+      icon: 'c-i-link' // 链上优势 - 链接图标
+    },
+    {
+      id: 'section3',
+      label: dict.home.feature3,
+      icon: 'c-i-lightbulb' // 精选 - 灯泡图标
+    },
+    {
+      id: 'section6',
+      label: dict.home.feature4,
+      icon: 'c-i-location-point' // 区域 - 位置图标
+    }
+  ];
+  
   return (
- 
+
     <div className="home">
-      <div id="hs-web-interactives-top-push-anchor" className="go3670563033"></div>
-      {/* <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WK7TLL9" height="0" width="0" className="hide"></iframe>
-      </noscript> */}
       <Header lang={{ dict }} locale={{ lang }} />
       <main
             className="colors-teal-pink service-page-template"
@@ -87,13 +136,13 @@ export default async function Home({ params }: PageProps) {
               tabIndex={0}
             >
           <div className="d-none d-md-block page-section-inline-img-container position-absolute">
-            <img aria-hidden="true" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/headers/cscglobal-2024-homepage-hero.jpg" className="page-section-inline-img position-relative"/>
+            <img aria-hidden="true" src="/images/banner.jpg" alt="banner" className="page-section-inline-img position-relative"/>
           </div>
           <div className="container-fluid container-xl page-section-container">
             <div className="row py-5">
               <div className="col-12 col-md-6 col-lg-5 col-xl-6 position-relative d-flex align-items-center">
                 <div className="page-section-headline-container w-100 ps-lg-3 pe-xl-4">
-                  <div className="section-headline-top-border bg-purplepink-ltor"></div>
+                  <div className="section-headline-top-border bg-primary-to-lightgreen"></div>
                   <h1 id="hero-headline" className="text-navy lh-1 display-5">{dict.home.slogon} 
                     <br className="d-lg-none d-xl-block" />{dict.home.slogon2} 
                   </h1>
@@ -101,8 +150,8 @@ export default async function Home({ params }: PageProps) {
                     <p className="pe-lg-3 pe-xl-5">{dict.home.subslogon}</p>
                   </div>
                   <div className="hero-left-button mt-5 d-flex justify-content-center justify-content-md-start">
-                    <Link className="btn btn-navy-outline text-uppercase rounded-pill d-flex align-items-center" href="/service/contact-sales/">
-                      <span aria-hidden="true" className="csc-icon c-i-chat-bubbles-blank text-purple me-2"></span>
+                    <Link className="btn btn-primary text-uppercase rounded-pill d-flex align-items-center px-4 py-2" href={`/${lang}/service/contact-sales/`} style={{ backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)' }}>
+                      <span aria-hidden="true" className="csc-icon c-i-chat-bubbles-blank me-2"></span>
                           {dict.home.slogonbutton}                    
                     </Link>
                   </div>
@@ -111,45 +160,13 @@ export default async function Home({ params }: PageProps) {
             </div>
           </div>
         </section>
-        <nav aria-label="page" id="secondaryNav" className="navbar sticky-top secondary-page-navbar secondary-page-navbar-subhome d-none d-lg-flex py-0 bg-white">
-          <div className="container-fluid container-xl secondary-page-navbar-container secondary-page-navbar-subhome-container">
-            <ul className="nav secondary-nav nav-fill">
-              <li className="nav-item secondary-nav-item secondary-nav-item-white-bg position-relative">
-                <Link className="nav-link secondary-page-nav-link link-with-icon avenir-heavy d-flex align-items-center justify-content-center" href="#section1">
-                  <span aria-hidden="true" className="csc-icon c-i-hand-gear me-2 text-purple"></span>
-                  <span className="link-text-underline">{dict.home.feature1}</span>
-                </Link>
-                <div id="section1-indicator" className="active-section-indicator bg-teal"></div>
-              </li>
-              <li className="nav-item secondary-nav-item secondary-nav-item-white-bg position-relative">
-                <Link className="nav-link secondary-page-nav-link link-with-icon avenir-heavy d-flex align-items-center justify-content-center" href="#section2">
-                  <span aria-hidden="true" className="csc-icon c-i-thinking me-2 text-purple"></span>
-                  <span className="link-text-underline">{dict.home.feature2}</span>
-                </Link>
-                <div id="section2-indicator" className="active-section-indicator bg-teal"></div>
-              </li>
-              <li className="nav-item secondary-nav-item secondary-nav-item-white-bg position-relative">
-                <Link className="nav-link secondary-page-nav-link link-with-icon avenir-heavy d-flex align-items-center justify-content-center" href="#section5">
-                  <span aria-hidden="true" className="csc-icon c-i-lightbulb me-2 text-purple"></span>
-                  <span className="link-text-underline">{dict.home.feature3}</span>
-                </Link>
-                <div id="section5-indicator" className="active-section-indicator bg-teal"></div>
-              </li>
-              <li className="nav-item secondary-nav-item secondary-nav-item-white-bg position-relative nav-item-no-border">
-                <Link className="nav-link secondary-page-nav-link link-with-icon avenir-heavy d-flex align-items-center justify-content-center" href="#section6">
-                  <span aria-hidden="true" className="csc-icon c-i-location-point me-2 text-purple"></span>
-                  <span className="link-text-underline">{dict.home.feature4}</span>
-                </Link>
-                <div id="section6-indicator" className="active-section-indicator bg-teal"></div>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <SecondaryNav items={navItems} />
         <div className="sticky-indicator position-absolute"></div>
         <section
               aria-labelledby="section1-headline"
               id="section1"
-              className="page-section bg-purplepink-ltor px-3 px-xl-0 py-5"
+              className="page-section px-3 px-xl-0 py-5"
+              style={{ backgroundColor: 'var(--primary-color)' }}
               tabIndex={0}
             >
           <div className="container-fluid container-xl page-section-container rounded-3 bg-white mb-lg-5">
@@ -183,17 +200,10 @@ export default async function Home({ params }: PageProps) {
                   <h2 id="section2-headline" className="avenir-heavy text-white mb-0">{dict.home.createTrustDESC1}
                     <br className="d-none d-md-block" />
                   </h2>
-                  <h3 className="avenir-light text-white h2">{dict.home.createTrustDESC2}</h3>
-                  <div className="hero-left-button mt-4 mt-lg-3">
-                    <Link className="btn btn-white rounded-pill text-uppercase" href="/service/campaigns/we-got-you/">
-                          {dict.home.dicovernow}
-                          
-                      {/* <span className="visually-hidden"> we've got you</span> */}
-                    </Link>
-                  </div>
+                  <h3 className={`avenir-light text-white h5 mt-3`}>{dict.home.createTrustDESC2}</h3>
                 </div>
                 <div className="col-sm-6 col-md-7 col-lg-6 d-none d-sm-block">
-                  <img aria-hidden="true" src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/csc-wgy-streamline-new.png" alt="" width="100%" />
+                  <img aria-hidden="true" src="/images/2.png" alt="" width="100%" />
                 </div>
               </div>
             </div>
@@ -210,14 +220,14 @@ export default async function Home({ params }: PageProps) {
               <div className="col-12 col-xxl-4 rounded-3 bg-white shadow position-xxl-absolute homepage-video-intro px-4 px-xxl-5 py-4 pt-xxl-5 mt-xxl-3">
                 <div className="page-section-headline-container pb-4 pb-md-5 pt-xl-1 pb-xl-1">
                   <div className="section-headline-top-border bg-redorange-5050-ltor"></div>
-                  <h2 id="section3-headline" className="text-navy lh-1">{dict.home.truststructure} 
+                  <h2 id="section3-headline" className="text-navy lh-1 h3">{dict.home.truststructure} 
                     {/* <br className="d-none d-xxl-block" />An Unwavering Commitment. */}
                   </h2>
-                  <p>
+                  <p className={lang === 'cn' ? 'pt-4' : 'pt-2'}>
                         {dict.home.truststructureDESC}
                       </p>
                   <div className="hero-left-button mt-4 mt-lg-5 mt-xl-4">
-                    <Link className="btn btn-navy rounded-pill text-uppercase" href="/service/about/">
+                    <Link className="btn btn-navy rounded-pill text-uppercase" href={`/${lang}/service/about/`}>
                           {dict.home.truststructureButton}
                           
                       {/* <span className="visually-hidden"> about CSC and out history</span> */}
@@ -230,9 +240,9 @@ export default async function Home({ params }: PageProps) {
                   <video
                         className="modal-video rounded-2 shadow-lg"
                         controls
-                        poster="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/videos/A_Brand_to_Lead_the_Business.jpg"
+                        loop
                       >
-                    <source src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/videos/A_Brand_to_Lead_the_Business.mp4" type="video/mp4" />
+                    <source src="/demo.mp4" type="video/mp4" />
                   </video>
                 </div>
               </div>
@@ -250,7 +260,7 @@ export default async function Home({ params }: PageProps) {
               <div className="col px-0">
                 <div className="page-section-headline-container mb-0">
                   <div className="section-headline-top-border bg-teal"></div>
-                  <h2 id="section4-headline" className="text-navy display-6">{dict.home.rules}</h2>
+                  <h2 id="section4-headline" className="text-navy display-6 h4">{dict.home.rules}</h2>
                   <p className="mb-0">{dict.home.rulesdesc}</p>
                 </div>
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 page-section-content page-section-rolling-stats justify-content-center mt-2" data-element="stats-row">
@@ -330,39 +340,21 @@ export default async function Home({ params }: PageProps) {
                 </div>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gy-2 page-section-content justify-content-center mt-1 position-relative z-index-1">
                   <div className="col-12 col-md-6 col-lg-4 csc-card-col">
-                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-between py-4 px-4 bg-white position-relative my-2">
-                      <span className="csc-icon csc-icon-xl mt-2 c-i-earth rounded-circle p-3 bg-navyteal-ltor d-flex align-items-center text-white justify-content-center"></span>
-                      <p className="text-center mb-0 fs-4 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-2">{dict.home.rule1}</p>
-                      <Link href="/service/about/csc-office-locations/" className="no-underline mt-3 pb-2">
-                        <div className="rounded-circle border border-2 border-hyperlink d-flex align-items-center justify-content-center p-2">
-                          <span className="csc-icon c-i-arrow-right cursor-pointer"></span>
-                          {/* <span className="visually-hidden">Learn more about Expertise and capabilities in more than 140 jurisdictions</span> */}
-                        </div>
-                      </Link>
+                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-start py-4 px-4 bg-white position-relative my-2">
+                      <span className="csc-icon csc-icon-xl mt-2 c-i-handshake rounded-circle p-3 d-flex align-items-center text-white justify-content-center" style={{ backgroundColor: 'var(--primary-color)' }}></span>
+                      <p className="text-center mb-0 fs-5 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-4">{dict.home.rule1}</p>
                     </div>
                   </div>
                   <div className="col-12 col-md-6 col-lg-4 csc-card-col">
-                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-between py-4 px-4 bg-white position-relative my-2">
-                      <span className="csc-icon csc-icon-xl mt-2 c-i-thumbs-up rounded-circle p-3 bg-purplepink-ltor d-flex align-items-center text-white justify-content-center"></span>
-                      <p className="text-center mb-0 fs-4 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-2">{dict.home.rule2}</p>
-                      <Link href="/service/about/#section3" className="no-underline mt-3 pb-2">
-                        <div className="rounded-circle border border-2 border-hyperlink d-flex align-items-center justify-content-center p-2">
-                          <span className="csc-icon c-i-arrow-right cursor-pointer"></span>
-                          {/* <span className="visually-hidden">Learn more about World-class NPS scores</span> */}
-                        </div>
-                      </Link>
+                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-start py-4 px-4 bg-white position-relative my-2">
+                      <span className="csc-icon csc-icon-xl mt-2 c-i-clock rounded-circle p-3 d-flex align-items-center text-white justify-content-center" style={{ backgroundColor: 'var(--primary-color)' }}></span>
+                      <p className="text-center mb-0 fs-5 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-4">{dict.home.rule2}</p>
                     </div>
                   </div>
                   <div className="col-12 col-md-6 col-lg-4 csc-card-col">
-                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-between py-4 px-4 bg-white position-relative my-2">
-                      <span className="csc-icon csc-icon-xl mt-2 c-i-trophy rounded-circle p-3 bg-orangered-ltor d-flex align-items-center text-white justify-content-center"></span>
-                      <p className="text-center mb-0 fs-4 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-2">{dict.home.rule3}</p>
-                      <Link href="/service/about/awards/" className="no-underline mt-3 pb-2">
-                        <div className="rounded-circle border border-2 border-hyperlink d-flex align-items-center justify-content-center p-2">
-                          <span className="csc-icon c-i-arrow-right cursor-pointer"></span>
-                          {/* <span className="visually-hidden">Learn more about Award-winning solutions</span> */}
-                        </div>
-                      </Link>
+                    <div className="card csc-card h-100 border-1 border-lightergray rounded-3 shadow-lg d-flex flex-column align-items-center justify-content-start py-4 px-4 bg-white position-relative my-2">
+                      <span className="csc-icon csc-icon-xl mt-2 c-i-calendar rounded-circle p-3 d-flex align-items-center text-white justify-content-center" style={{ backgroundColor: 'var(--primary-color)' }}></span>
+                      <p className="text-center mb-0 fs-5 text-navy avenir-heavy px-4 px-xl-5 lh-sm mt-4">{dict.home.rule3}</p>
                     </div>
                   </div>
                 </div>
@@ -626,13 +618,34 @@ export default async function Home({ params }: PageProps) {
               </div>
               <p className="text-white py-2">{dict.home.locationdesc}</p>
               <div className="mb-5 pb-3 mb-md-0 pb-md-0 mb-lg-5 pb-lg-3">
-                <Link className="btn btn-white-outline mt-4 mb-5 mb-md-0" href="/service/about/csc-office-locations/"> {dict.home.locationbutton} </Link>
+                <Link className="btn mt-4 mb-5 mb-md-0" style={{ backgroundColor: 'var(--primary-color)', borderColor: 'var(--primary-color)', color: 'var(--white)' }} href={`/${lang}/service/about/csc-office-locations/`}> {dict.home.locationbutton} </Link>
               </div>
             </div>
             <div className="col-md-7 col-lg-8 d-none d-md-block">
-              <div className="position-relative">
-                <img aria-hidden="true" loading="lazy" data-src="https://cscwebcontentstorage.blob.core.windows.net/cscmarketing-cscglobal-media/images/section-photos/rainbow-dot-map.svg" className="lazy rainbow-dot-map-img position-absolute" />
-              </div>
+              <MapWithRoutes
+                mapSrc="/world.svg"
+                points={[
+                  // 三大核心枢纽（带标签）
+                  { ...mapCities.hongKong, label: dict.home.hongKong, color: '#00b2a9' },
+                  { ...mapCities.singapore, label: dict.home.singapore, color: '#00b2a9' },
+                  { ...mapCities.tokyo, label: dict.home.tokyo, color: '#00b2a9' },
+                  // 所有终点城市（不带标签）
+                  ...Object.entries(mapCities)
+                    .filter(([key]) => !['hongKong', 'singapore', 'tokyo'].includes(key))
+                    .map(([, coords]) => ({ ...coords, color: '#00b2a9' }))
+                ]}
+                routes={
+                  // 自动生成所有航线
+                  Object.entries(mapRoutes).flatMap(([hub, destinations]) =>
+                    destinations.map(dest => ({
+                      from: mapCities[hub as keyof typeof mapCities],
+                      to: mapCities[dest as keyof typeof mapCities],
+                      color: '#00b2a9',
+                      animated: true,
+                    }))
+                  )
+                }
+              />
             </div>
           </div>
         </div>

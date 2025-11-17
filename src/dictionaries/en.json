@@ -60,7 +60,10 @@
 
 "location": "Locations",
 "locationdesc": "We have established service hubs in major wealth management centers such as Hong Kong, Singapore, and Japan, in collaboration with multiple licensed trust institutions and regulatory compliance partners. Meanwhile, we deploy nodes and infrastructure across major global public blockchains. Regardless of where clients are located, they can remotely set up, manage, and audit their on-chain trust structures through decentralized wallets.",
-"locationbutton": "Consult with Experts"
+"locationbutton": "Consult with Experts",
+"hongKong": "Hong Kong",
+"singapore": "Singapore",
+"tokyo": "Tokyo"
 
   },
   "cases": {
