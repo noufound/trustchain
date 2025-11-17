@@ -218,7 +218,7 @@ export default function Header({ lang, locale }: ParamProps) {
             
             {/* 右侧按钮区域 */}
             <div className="d-flex align-items-center gap-2">
-              {isConnected ? (
+              {!isConnected ? (
                 <Link href={`/${locale.lang}/dashboard/`} className="btn-header-action">
                   {dict.header.dashboard}
                 </Link>

@@ -14,7 +14,7 @@ import {
 
 interface SolutionTemplateProps {
   lang: string;
-  dict: any;
+  dict: Record<string, Record<string, string>>;
   solutionKey: string; // 例如: 'familytrust', 'dao', 'compliance', 'enterprise', 'rwa', 'vesting'
 }
 
