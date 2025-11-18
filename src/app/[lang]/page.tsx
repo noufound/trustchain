@@ -1000,7 +1000,7 @@ export default async function Home({ params }: PageProps) {
                 <div className="ratio ratio-16x9">
                   <iframe
                     className="modal-video rounded-2 shadow-lg"
-                    src="https://www.youtube.com/embed/ZqJxv5PiPJo?si=XZ696tgF0YhCZ6OX&amp;controls=0&amp;start=270"
+                    src="https://www.youtube.com/embed/Isdpqp36Gg0?si=x4h8k0N_PNewjVfV"
                     title="YouTube video player"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
