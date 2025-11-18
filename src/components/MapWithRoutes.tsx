@@ -106,7 +106,7 @@ export default function MapWithRoutes({ mapSrc, points, routes }: MapWithRoutesP
   return (
     <div 
       ref={containerRef} 
-      className="map-with-routes-container position-relative w-100 h-100"
+      className="map-with-routes-container position-relative w-100"
     //   onClick={handleMapClick}
     >
       {/* 背景地图 */}
@@ -114,7 +114,6 @@ export default function MapWithRoutes({ mapSrc, points, routes }: MapWithRoutesP
         src={mapSrc} 
         alt="World Map" 
         className="w-100 h-auto d-block"
-        style={{ opacity: 0.8 }}
       />
       
       {/* 坐标显示提示 */}
