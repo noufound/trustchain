@@ -283,7 +283,7 @@ export default function DashboardOverview() {
                         </span>
                       </td>
                       <td>
-                        <Button disabled={!(trust.status == '进行中')} onClick={async () => await withdraw(trust)}>提取</Button>
+                        <Button disabled={!(trust.withdrawableAmount != '0.00')} onClick={async () => await withdraw(trust)}>提取</Button>
                       </td>
                     </tr>
                   ))
